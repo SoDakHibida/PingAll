@@ -4,7 +4,7 @@ Ping multiple hosts!
 
 input.txt --- example input file format (default accepted filename)
 
-Output:
+## Output:
   
   targets.txt --- hosts pinged separated by \n
 
