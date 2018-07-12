@@ -1,0 +1,22 @@
+Pinging Host(s) 1.1.1.1:
+Starting Nmap 7.70 ( https://nmap.org ) at 2018-07-12 15:12 EDT
+Nmap scan report for 1dot1dot1dot1.cloudflare-dns.com (1.1.1.1)
+Host is up (0.014s latency).
+Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds
+
+Pinging Host(s) 8.8.4.4:
+Starting Nmap 7.70 ( https://nmap.org ) at 2018-07-12 15:12 EDT
+Nmap scan report for google-public-dns-b.google.com (8.8.4.4)
+Host is up (0.029s latency).
+Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds
+
+Pinging Host(s) 192.168.1.1-10:
+Starting Nmap 7.70 ( https://nmap.org ) at 2018-07-12 15:12 EDT
+Nmap done: 10 IP addresses (0 hosts up) scanned in 5.11 seconds
+
+Pinging Host(s) 8.8.8.8:
+Starting Nmap 7.70 ( https://nmap.org ) at 2018-07-12 15:12 EDT
+Nmap scan report for google-public-dns-a.google.com (8.8.8.8)
+Host is up (0.018s latency).
+Nmap done: 1 IP address (1 host up) scanned in 0.15 seconds
+
