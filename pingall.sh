@@ -1,7 +1,7 @@
 #!/bin/bash
 # Program name: pingall.sh
 # Author: SoDakHib
-# Date: 07/11/2018
+# Last-Updated: 07/17/2018
 #
 #------------------------------------------------------------------------------------------
 #       __________.__                  _____  .__  .__   
@@ -37,6 +37,7 @@ in="input.txt"
 
 # temp middle file
 temp="temp.txt"
+temp2="temp2.txt"
 
 # targets file (one per line)
 db="targets.txt"
@@ -86,8 +87,20 @@ if [ -f $in ]; then
 	tr -d '[:space:]' < $in > $temp
 
 	# replaces commas with newlines
-	tr , '\n' < $temp > $db
+	tr , '\n' < $temp > $temp2
 
+	rm temp.txt
+
+	# prettify (/)slash and (-)dash notations
+	while IFS='' read -r line || [[ -n "$line" ]]; do 
+		echo "Organizing target(s): $line"
+		nmap -sL $line | grep "Nmap scan report" | awk '{print $NF}' >> $temp		
+	done < "$temp2"
+
+	cat $temp | tr -d ')(' > $db
+
+	# clean up
+	rm temp2.txt
 	rm temp.txt
 
 	echo "targets file updated"
@@ -95,8 +108,9 @@ if [ -f $in ]; then
 
 	# read it
 	while read -r host || [[ -n $host ]]; do
-		echo "Pinging Host(s) $host:" >> $o
-		nmap -sn -PE $host >> $o
+		echo "Ping Results for $host:" >> $o
+		echo "Pinging Host $host" 
+		nmap -sn -PE $host | sed '/Starting/d' | sed '/Note/d' >> $o 
 	       	echo  >> $o	
 	done < "$db"
 else
