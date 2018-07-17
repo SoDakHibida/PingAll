@@ -142,5 +142,7 @@ IFS=$OLDIFS
 echo "--------------------- PingAll Complete! -----------------------"
 echo
 # print results
-cat $o
+cat $able
+echo
+echo "to view the complete results, check the results.txt file in this directory"
 echo "---------------------- PingAll Goodbye! -----------------------"
