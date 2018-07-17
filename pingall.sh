@@ -27,6 +27,7 @@
 #
 # targets separated by line in targets.txt
 # results stored in results.txt
+# pingable hosts (results) stored in able.txt
 #
 #------------------------------------------------------------------------------------------
 #
@@ -45,6 +46,12 @@ db="targets.txt"
 # output location:
 o="results.txt"
 
+# pingable hosts (results)
+able="able.txt"
+	
+# string for compare
+up="1 host up" 
+
 # save original IFS (Internal Field Separator)
 OLDIFS=$IFS
 
@@ -61,6 +68,7 @@ do
 			echo "targets.txt  results.txt"
 			rm targets.txt
 			rm results.txt
+			rm able.txt
 			echo "--- Updated Directory ---"
 			ls
 			exit
@@ -110,12 +118,22 @@ if [ -f $in ]; then
 	while read -r host || [[ -n $host ]]; do
 		echo "Ping Results for $host:" >> $o
 		echo "Pinging Host $host" 
-		nmap -sn -PE $host | sed '/Starting/d' | sed '/Note/d' >> $o 
-	       	echo  >> $o	
+		nmap -sn -PE $host | sed '/Starting/d' | sed '/Note/d' > $temp
+	        cat $temp >> $o	
+	       	echo >> $o
+
+		if grep -q $up "$temp"; then
+			cat $temp >> $able
+			echo >> $able	
+		fi
+
 	done < "$db"
 else
 	echo "no input file found"
 fi
+
+# more clean up
+rm temp.txt
 
 # revert to original IFS
 IFS=$OLDIFS
