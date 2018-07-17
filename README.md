@@ -9,3 +9,4 @@ input.txt --- example input file format (default accepted filename)
   targets.txt --- hosts pinged separated by \n
 
   results.txt --- nmap output for each host
+
