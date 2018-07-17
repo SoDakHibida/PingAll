@@ -15,7 +15,7 @@
 # Usage:
 #	populate inputs file (hosts separated by commas):
 #		X.X.X.X, X.X.X.X,
-#		X.X.X.X-X, X.X.X.X,
+#		X.X.X.X-X, X.X.X.X/X,
 #		X.X.X.X
 #
 # 	to run:
