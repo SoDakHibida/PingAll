@@ -96,7 +96,7 @@ if [ -f $in ]; then
 	# read it
 	while read -r host || [[ -n $host ]]; do
 		echo "Pinging Host(s) $host:" >> $o
-		nmap -sn -PE -PP $host >> $o
+		nmap -sn -PE $host >> $o
 	       	echo  >> $o	
 	done < "$db"
 else
