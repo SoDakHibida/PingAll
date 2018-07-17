@@ -1,6 +1,6 @@
 # PingAll
 
-Ping multiple hosts!
+Ping multiple hosts! Created specifically to handle Nessus output.
 
 input.txt --- example input file format (default accepted filename)
 
